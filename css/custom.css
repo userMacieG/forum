@@ -1,0 +1,31 @@
+body {
+	font-family: 'Roboto', sans-serif;
+	font-size: 14px !important;
+	background-color: #f8f9fa;
+    color: #212529;
+}
+
+header {
+	background-color: #fff !important;
+    border-bottom: 1px solid rgba(0,0,0,.125);
+}
+
+footer {
+    padding-top: 26px;
+    padding-bottom: 20px;
+	background-color: #fff;
+	border-top: 1px solid rgba(0,0,0,.125);
+}
+
+.bg-light {
+	background-color: #fff !important;
+}
+
+.card-header {
+    font-size: 14px !important;
+}
+
+.dropdown-item {
+    padding: 2px 16px;
+    font-size: 14px;
+}
