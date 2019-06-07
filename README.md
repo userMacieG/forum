@@ -1,10 +1,7 @@
-# forum
+# Forum
 ![Code Size](https://img.shields.io/github/languages/code-size/userMacieG/forum.svg?style=popout)
 ![License](https://img.shields.io/github/license/userMacieG/forum.svg?style=popout)
 ![Last Commit](https://img.shields.io/github/last-commit/userMacieG/forum.svg?style=popout)
-
-Prosty silnik forum stworzony na **PHP** oraz **MySQLi**.
-Wygląd bazuje na frameworku **Bootstrap 4**.
 
 ## TODO
 - [ ] system prywatnych wiadomości;
@@ -24,6 +21,3 @@ Wygląd bazuje na frameworku **Bootstrap 4**.
 - [ ] podstrona z polityką prywatności i warunkach korzystania;
 - [ ] instalator strony;
 - [ ] plik konfiguracyjny;
-
-## License
-[MIT](https://choosealicense.com/licenses/mit/)
