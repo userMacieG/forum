@@ -20,4 +20,8 @@
 - [ ] dodanie statystyki najwięcej dostępnych;
 - [ ] podstrona z polityką prywatności i warunkach korzystania;
 - [ ] instalator strony;
-- [ ] plik konfiguracyjny;
+- [x] plik konfiguracyjny;
+- [ ] system stronicowania postów w temacie;
+- [ ] logowanie po przez google, twitter, facebook;
+- [ ] system oceny tematów;
+- [ ] zabezpieczenie przed CSRF;

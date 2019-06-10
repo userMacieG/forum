@@ -1,6 +1,10 @@
 body {
 	font-family: 'Roboto', sans-serif;
 	font-size: 14px !important;
+	font-style: normal;
+	font-variant: normal;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
 	background-color: #f8f9fa;
     color: #212529;
 }
@@ -28,4 +32,33 @@ footer {
 .dropdown-item {
     padding: 2px 16px;
     font-size: 14px;
+}
+
+.topic {
+	color: #fff;
+	background-color: #333;
+	padding-top: 9px;
+	width: 42px;
+	height: 42px;
+	display: inline-block;
+	font-size: 18px;
+	border-radius: 4px;
+}
+
+#statistics .text {
+	font-size: 20px;
+	font-weight: 900;
+}
+
+#statistics .subtext {
+	font-size: 12px;
+}
+
+#forums .text {
+	font-size: 20px;
+	font-weight: 900;
+}
+
+#forums .subtext {
+	font-size: 12px;
 }

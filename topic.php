@@ -1,75 +1,136 @@
 <?php
-	include 'header.php';
+	include 'include/header.php';
 ?>
 <div class="container mt-3">
-<?php
-	if ($_GET) {
+	<?php
+		if ($_GET) {
 
-		$forum_id = $_GET['forum'];
-		$category_id = $_GET['category'];
+			$forum_id = $_GET['forum'];
+			$category_id = $_GET['category'];
+			$topic_id = $_GET['topic'];
 
-		if (empty($forum_id) || empty($category_id)) {
-			alert("danger", "Podane forum lub kategoria nie istnieje!");
-			return;
+			$forum = $database->prepare("SELECT * FROM forums WHERE id = ?;");
+			$forum->execute(array($forum_id));
+
+			$category = $database->prepare("SELECT * FROM categories WHERE id = ?;");
+			$category->execute(array($category_id));
+
+			$topic = $database->prepare("SELECT * FROM topics WHERE id = ?;");
+			$topic->execute(array($topic_id));
+
+			$error = '';
+
+			if (empty($forum_id) || empty($category_id) || empty($topic_id)) {
+				$error = 'Podane forum, kategoria lub temat nie istnieje!';
+			} else if ($forum->rowCount() <= 0) {
+				$error = 'Podane forum nie istnieje!';
+			} else if ($category->rowCount() <= 0) {
+				$error = 'Podana kategoria nie istnieje!';
+			} else if ($topic->rowCount() <= 0) {
+				$error = 'Podany temat nie istnieje!';
+			}
+
+			if (empty($error)) {
+	?>
+	<div class="card mb-3">
+		<div class="card-body">
+			<?php
+				$topic_info = $database->prepare("SELECT * FROM topics WHERE id = ?;");
+				$topic_info->execute(array($topic_id));
+				$topic_row = $topic_info->fetch(PDO::FETCH_OBJ);
+				echo '<div style="display: inline-block;"><h4 class="mb-0">Temat: <b>'.$topic_row->name.'</b></h4>';
+
+				$author_topic = $database->prepare("SELECT * FROM users WHERE id = ?;");
+				$author_topic->execute(array($topic_row->user_id));
+				$author_topic_row = $author_topic->fetch(PDO::FETCH_OBJ);
+				echo '<h6 class="mb-0">Autor: <a href="profile.php?id='.$author_topic_row->id.'"><b>'.$author_topic_row->username.'</b></a></h6></div>';
+				echo '<canvas class="user-icon rounded" data-name="'.$author_topic_row->username.'" width="48" height="48" style="float: left; display: inline-block; margin-right: 10px;" data-chars="1"></canvas>';
+			?>
+		</div>
+	</div>
+	<?php
+		$posts = $database->prepare("SELECT * FROM posts WHERE category_id = ? AND forum_id = ? AND topic_id = ?;");
+		$posts->execute(array($category_id, $forum_id, $topic_id));
+		while ($posts_row = $posts->fetch(PDO::FETCH_OBJ)) {
+	?>
+	<div class="mb-3">
+		<div class="card">
+			<div class="card-body">
+				<?php
+					$author = $database->prepare("SELECT * FROM users WHERE id = ?;");
+					$author->execute(array($posts_row->user_id));
+					$author_row = $author->fetch(PDO::FETCH_OBJ);
+					echo '<div style="display: inline-block; width: 100%;"><a href="profile.php?id='.$author_row->id.'"><b>'.$author_row->username.'</b></a>';
+					echo '<canvas class="user-icon rounded" data-name="'.$author_row->username.'" width="38" height="38" style="float: left; margin-right: 6px;" data-chars="1"></canvas>';
+
+					if ($posts_row->created == $posts_row->modified) {
+				?>
+				<div class="text-muted" style="font-size: 12px;">
+					<?= $posts_row->created ?>
+				<?php
+					} else {
+				?>
+				<div class="text-muted" style="font-size: 12px;">
+					<?= $posts_row->modified ?> <i class="fas fa-edit"></i>
+				<?php
+					}
+				?>
+				</div>
+				<div class="mt-3">
+					<?= $posts_row->content ?>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	<?php
 		}
 
-		$forum = mysqli_query($database, "select * from `forums` where id='".$forum_id."';");
-		if (mysqli_num_rows($forum) == 0) {
-			alert("danger", "Podane forum nie istnieje!");
-			return;
-		}
-
-		$category = mysqli_query($database, "select * from `categories` where id='".$category_id."';");
-		if (mysqli_num_rows($category) == 0) {
-			alert("danger", "Podana kategoria nie istnieje!");
-			return;
-		}
-
-		if (isset($user_id)) {
+		if (USER_ID) {
 			if (isset($_POST['post'])) {
-				$title = $_POST['title'];
-				if (empty($title)) {
-					alert("danger", "Uzupełnij tytuł tematu!");
-					return;
-				}
-
 				$content = $_POST['content'];
+
+				$post_error = [];
+
 				if (empty($content)) {
-					alert("danger", "Uzupełnij treść tematu!");
-					return;
+					$post_error = 'Uzupełnij treść odpowiedzi!';
+				} else if (strlen($content) < 12) {
+					$post_error = 'Treść odpowiedzi jest zbyt krótka! Minimalna długość to 12 znaki';
+				} else if (strlen($content) > 64000) {
+					$post_error = 'Treść odpowiedzi jest zbyt długa! Maksymalna długość to 64,000 znaki.';
 				}
 
-				mysqli_query($database, "insert into `topics` values (null, '".$title."', '".$category_id."', '".$forum_id."', '".$user_id."');");
-				$topic_id = mysqli_insert_id($database);
-				mysqli_query($database, "insert into `posts` values (null, '".$forum_id."', '".$category_id."', '".$topic_id."', '".$user_id."', '".$content."', '".date("Y-m-d H:i:s")."', '".date("Y-m-d H:i:s")."');");
-				alert("success", "Temat został utworzony.");
-				header("refresh:2;url=post.php?forum=".$forum_id."&category=".$category_id."&topic=".$topic_id);
+				if (empty($post_error)) {
+					$new_post = $database->prepare("INSERT INTO posts VALUES (NULL, ?, ?, ?, ?, ?, NOW(), NOW());");
+    				$new_post->execute(array($forum_id, $category_id, $topic_id, USER_ID, $content));
+					header('refresh:0');
+				} else {
+					alert('danger', $post_error);
+				}
 			}
 	?>
 	<div class="card mb-3">
 		<div class="card-body text-center">
 			<form method="post">
-				<input name="title" class="form-control" placeholder="Tytuł tematu">
-				<br>
 				<textarea name="content" class="form-control" placeholder="Treść posta..." rows="6"></textarea>
 				<br>
-				<button name="post" class="btn btn-outline-primary btn-block">Utwórz temat</button>
+				<button name="post" class="btn btn-outline-primary btn-block">Dodaj post</button>
 			</form>
 			<script>
-                CKEDITOR.replace('content');
-            </script>
+				CKEDITOR.replace('content');
+			</script>
 		</div>
 	</div>
-<?php
+	<?php
+				}
+			} else {
+				alert('danger', $error);
+			}
+		} else {
+			alert('danger', 'Podane forum, kategoria lub temat nie istnieje!');
 		}
-	} else {
-		alert("danger", "Podane forum lub kategoria nie istnieje!");
-		return;
-	}
-?>
+	?>
 </div>
 <?php
-	include 'footer.php';
-
-	mysqli_close($database);
+	include 'include/footer.php';
 ?>
