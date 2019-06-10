@@ -4,7 +4,6 @@
 <div class="container mt-3">
 	<?php
 		if ($_GET) {
-
 			$profile_id = (isset($_GET['id'])) ? $_GET['id'] : '';
 
 			$profile = $database->prepare("SELECT * FROM users WHERE id = ?;");

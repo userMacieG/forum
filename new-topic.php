@@ -4,7 +4,6 @@
 <div class="container mt-3">
 <?php
 	if ($_GET) {
-
 		$forum_id = $_GET['forum'];
 		$category_id = $_GET['category'];
 
@@ -28,7 +27,6 @@
 			if (USER_ID) {
 				if (isset($_POST['post'])) {
 					$title = $_POST['title'];
-
 					$content = $_POST['content'];
 
 					$post_error = [];
@@ -54,14 +52,14 @@
 						$new_post = $database->prepare("INSERT INTO posts VALUES (NULL, ?, ?, ?, ?, ?, NOW(), NOW());");
 						$new_post->execute(array($forum_id, $category_id, $topic_id, USER_ID, $content));
 						alert('success', 'Temat został utworzony.');
-						header('refresh:2;url=topic.php?forum='.$forum_id.'&category='.$category_id.'&topic='.$topic_id);
+						header("refresh:2;url={$config['default']['link']}topic.php?forum=$forum_id&category=$category_id&topic=$topic_id");
 					} else {
 						alert('danger', $post_error);
 					}
 				}
 	?>
 	<div class="card mb-3">
-		<div class="card-body text-center">
+		<div class="card-body">
 			<form method="post">
 				<input name="title" class="form-control" placeholder="Tytuł tematu">
 				<br>

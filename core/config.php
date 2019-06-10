@@ -7,6 +7,9 @@
 			'password' => '',
 			'database' => 'forum',
 			'charset' => 'utf8'
+	    ],
+		'default' => [
+			'link' => 'http://localhost/',
 	    ]
 	];
 ?>

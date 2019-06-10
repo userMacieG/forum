@@ -4,7 +4,6 @@
 <div class="container mt-3">
 	<?php
 		if ($_GET) {
-
 			$forum_id = $_GET['forum'];
 			$category_id = $_GET['category'];
 			$topic_id = $_GET['topic'];
@@ -110,7 +109,7 @@
 			}
 	?>
 	<div class="card mb-3">
-		<div class="card-body text-center">
+		<div class="card-body">
 			<form method="post">
 				<textarea name="content" class="form-control" placeholder="Treść posta..." rows="6"></textarea>
 				<br>

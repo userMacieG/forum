@@ -21,6 +21,10 @@ footer {
 	border-top: 1px solid rgba(0,0,0,.125);
 }
 
+p {
+    margin-bottom: 0;
+}
+
 .bg-light {
 	background-color: #fff !important;
 }
@@ -43,6 +47,10 @@ footer {
 	display: inline-block;
 	font-size: 18px;
 	border-radius: 4px;
+}
+
+.cke_wysiwyg_div {
+	padding: 16px !important;
 }
 
 #statistics .text {

@@ -51,7 +51,7 @@
 					$password_hash = password_hash($password, PASSWORD_BCRYPT);
 					$insert = $database->prepare("INSERT INTO users VALUES (NULL, ?, ?, ?, 1);");
 					$insert->execute(array($username, $email, $password_hash));
-					header('refresh:2;url=login.php');
+					header("refresh:2;url={$config['default']['link']}index.php");
 				} else {
 					alert('danger', $error);
 				}

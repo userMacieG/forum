@@ -42,7 +42,7 @@
 							</span>
 						</td>
 						<td>
-							<a href="category.php?forum=<?= $forums_row->id ?>&category=<?= $categories_row->id ?>">
+							<a href="<?= $config['default']['link'] ?>category.php?forum=<?= $forums_row->id ?>&category=<?= $categories_row->id ?>">
 								<?= $categories_row->name ?>
 							</a>
 						</td>

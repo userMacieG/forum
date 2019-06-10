@@ -4,7 +4,6 @@
 <div class="container mt-3">
 	<?php
 		if ($_GET) {
-
 			$forum_id = $_GET['forum'];
 			$category_id = $_GET['category'];
 
@@ -28,7 +27,7 @@
 				if (USER_ID) {
 	?>
 	<div class="mb-3">
-		<a class="btn btn-primary" href="new-topic.php?forum=<?= $forum_id ?>&category=<?= $category_id ?>">Stwórz temat</a>
+		<a class="btn btn-primary" href="<?= $config['default']['link'] ?>new-topic.php?forum=<?= $forum_id ?>&category=<?= $category_id ?>">Stwórz temat</a>
 	</div>
 	<?php
 		}
@@ -61,7 +60,7 @@
 				?>
 				<tr>
 					<td>
-						<a href="topic.php?forum=<?= $forum_id ?>&category=<?= $category_id ?>&topic=<?= $topics_row->id ?>"><?= $topics_row->name ?></a>
+						<a href="<?= $config['default']['link'] ?>topic.php?forum=<?= $forum_id ?>&category=<?= $category_id ?>&topic=<?= $topics_row->id ?>"><?= $topics_row->name ?></a>
 					</td>
 					<td class="text-center">
 						<?php

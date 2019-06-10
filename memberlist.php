@@ -25,7 +25,7 @@
 				?>
 				<tr>
 					<td>
-						<a href="profile.php?id=<?= $members_row->id ?>">
+						<a href="<?= $config['default']['link'] ?>profile.php?id=<?= $members_row->id ?>">
 							<b><?= $members_row->username ?></b>
 						</a>
 					</td>

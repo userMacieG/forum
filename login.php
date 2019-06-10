@@ -35,7 +35,7 @@
 				if (empty($error)) {
 					alert('success', 'Pomyślnie zalogowano!');
 					$_SESSION['user_id'] = $user_row->id;
-					header('refresh:2;url=index.php');
+					header("refresh:2;url={$config['default']['link']}index.php");
 				} else {
 					alert('danger', $error);
 				}

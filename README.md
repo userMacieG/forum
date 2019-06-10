@@ -1,7 +1,9 @@
 # Forum
-![Code Size](https://img.shields.io/github/languages/code-size/userMacieG/forum.svg?style=popout)
-![License](https://img.shields.io/github/license/userMacieG/forum.svg?style=popout)
-![Last Commit](https://img.shields.io/github/last-commit/userMacieG/forum.svg?style=popout)
+![HitCount](http://hits.dwyl.io/usermacieg/forum.svg)
+![Repo Size](https://img.shields.io/github/repo-size/usermacieg/forum.svg?style=flat-square)
+![Code Size](https://img.shields.io/github/languages/code-size/userMacieG/forum.svg?style=flat-square)
+![Last Commit](https://img.shields.io/github/last-commit/userMacieG/forum.svg?style=flat-square)
+![License](https://img.shields.io/github/license/userMacieG/forum.svg?style=flat-square)
 
 ## TODO
 - [ ] system prywatnych wiadomości;
