@@ -6,7 +6,7 @@
 			'username' => 'root',
 			'password' => '',
 			'database' => 'forum',
-			'charset' => 'utf8'
+			'charset' => 'utf8mb4'
 	    ],
 		'default' => [
 			'link' => 'http://localhost/',

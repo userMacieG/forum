@@ -18,11 +18,8 @@
 	<div class="card">
 		<div class="card-body text-center">
 			<i class="fas fa-exclamation-circle text-danger" style="font-size: 128px;"></i>
-			<br>
-			<br>
-			<h1>Błąd 400</h1>
-			<h5>Wykonane zapytanie nie podwiodło się!</h5>
-			<br>
+			<h1 class="mt-3">Błąd 400</h1>
+			<h5 class="mb-3">Wykonane zapytanie nie podwiodło się!</h5>
 			<a href="<?= $config['default']['link'] ?>index.php" class="btn btn-danger">Strona główna</a>
 		</div>
 	</div>
@@ -32,11 +29,8 @@
 	<div class="card">
 		<div class="card-body text-center">
 			<i class="fas fa-exclamation-circle text-danger" style="font-size: 128px;"></i>
-			<br>
-			<br>
-			<h1>Błąd 401</h1>
-			<h5>Nie posiadasz dostępu!</h5>
-			<br>
+			<h1 class="mt-3">Błąd 401</h1>
+			<h5 class="mb-3">Nie posiadasz dostępu!</h5>
 			<a href="<?= $config['default']['link'] ?>index.php" class="btn btn-danger">Strona główna</a>
 		</div>
 	</div>
@@ -46,11 +40,8 @@
 	<div class="card">
 		<div class="card-body text-center">
 			<i class="fas fa-exclamation-circle text-danger" style="font-size: 128px;"></i>
-			<br>
-			<br>
-			<h1>Błąd 403</h1>
-			<h5>Nie posiadasz dostępu!</h5>
-			<br>
+			<h1 class="mt-3">Błąd 403</h1>
+			<h5 class="mb-3">Nie posiadasz dostępu!</h5>
 			<a href="<?= $config['default']['link'] ?>index.php" class="btn btn-danger">Strona główna</a>
 		</div>
 	</div>
@@ -60,11 +51,8 @@
 	<div class="card">
 		<div class="card-body text-center">
 			<i class="fas fa-exclamation-circle text-danger" style="font-size: 128px;"></i>
-			<br>
-			<br>
-			<h1>Błąd 404</h1>
-			<h5>Podana strona nie istnieje!</h5>
-			<br>
+			<h1 class="mt-3">Błąd 404</h1>
+			<h5 class="mb-3">Podana strona nie istnieje!</h5>
 			<a href="<?= $config['default']['link'] ?>index.php" class="btn btn-danger">Strona główna</a>
 		</div>
 	</div>
@@ -74,11 +62,8 @@
 	<div class="card">
 		<div class="card-body text-center">
 			<i class="fas fa-exclamation-circle text-danger" style="font-size: 128px;"></i>
-			<br>
-			<br>
-			<h1>Błąd 500</h1>
-			<h5>Wykonane zapytanie nie podwiodło się!</h5>
-			<br>
+			<h1 class="mt-3">Błąd 500</h1>
+			<h5 class="mb-3">Wykonane zapytanie nie podwiodło się!</h5>
 			<a href="<?= $config['default']['link'] ?>index.php" class="btn btn-danger">Strona główna</a>
 		</div>
 	</div>

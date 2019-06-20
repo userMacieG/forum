@@ -25,5 +25,5 @@
 - [x] plik konfiguracyjny;
 - [ ] system stronicowania postów w temacie;
 - [ ] logowanie po przez google, twitter, facebook;
-- [ ] system oceny tematów;
+- [x] podstawowy plik .htaccess;
 - [ ] zabezpieczenie przed CSRF;

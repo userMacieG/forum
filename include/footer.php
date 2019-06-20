@@ -1,5 +1,5 @@
 		</main>
-		<footer class="mt-auto text-muted">
+		<footer class="mt-auto">
 		  	<div class="container text-center">
 		    	© 2019 forum.pl
 		  	</div>

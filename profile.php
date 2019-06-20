@@ -26,15 +26,18 @@
 			Profil
 		</div>
 		<div class="card-body">
-			Nazwa użytkownika: <b><?= $profile_row->username ?></b>
+			<canvas class='user-icon rounded' data-name='<?= $profile_row->username ?>' width='22' height='22' style='margin-bottom: -6px;' data-chars='1'></canvas> <b><?= $profile_row->username ?></b>
+			<br>
 			<br>
 			Grupa:
 			<?php
 				$group = $database->prepare("SELECT * FROM groups WHERE id = ?;");
 				$group->execute(array($profile_row->group_id));
 				$group_row = $group->fetch(PDO::FETCH_OBJ);
-				echo "<span class='badge badge-dark'>".$group_row->name."</span>";
 			?>
+			<span class="badge badge-<?= $group_row->color ?>"><?= $group_row->name ?></span>
+			<br>
+			Email: <b><?= $profile_row->email ?></b>
 		</div>
 	</div>
 	<?php

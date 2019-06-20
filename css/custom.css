@@ -11,18 +11,21 @@ body {
 
 header {
 	background-color: #fff !important;
-    border-bottom: 1px solid rgba(0,0,0,.125);
 }
 
 footer {
-    padding-top: 26px;
+	padding-top: 24px;
     padding-bottom: 20px;
-	background-color: #fff;
-	border-top: 1px solid rgba(0,0,0,.125);
+    background-color: #343a40;
+	color: #999ea2;
 }
 
 p {
     margin-bottom: 0;
+}
+
+pre {
+	margin-bottom: 0;
 }
 
 .bg-light {
@@ -31,6 +34,7 @@ p {
 
 .card-header {
     font-size: 14px !important;
+	background-color: #fff;
 }
 
 .dropdown-item {
